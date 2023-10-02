@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scrolling</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+<Style>
+    body {
+      background: #efefef;
+      padding: 30px;
+    }
+    .content {
+      background: #fff;
+      padding: 50px;
+      font-size: 19px;
+      line-height: 1.5;
+      min-height: 3000px;
+    }
+    .scroll-line {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 8px;
+      background: #1CE;
+      transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) width;
+    }
+    
+</Style>
+</head>
+<body>
+  <div class="scroll-line"></div>
+  <div class="container">
+    <div class="content">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus quia quae et blanditiis natus suscipit. Pariatur, inventore. Sapiente dolore ut debitis officia, hic accusantium ipsa? Autem sed illo eligendi officiis.
+    </div>
+  </div>
+ <script>
+  const scrollLine = document.querySelector('.scroll-line');
+
+  function fillScrollLine() {
+    const windowHeight = window.innerHeight;
+    const fullHeight = document.body.clientHeight;
+    const scrolled = window.scrollY;
+    const percentScrolled = (scrolled / (fullHeight - windowHeight))* 100;
+    /* scrollLine.style.width = percentScrolled + '%'; */
+    scrollLine.style.width = `${percentScrolled}%`; 
+  }
+
+  window.addEventListener('scroll', fillScrollLine);
+ </script>
+
+</body>
+</html>

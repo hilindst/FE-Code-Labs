@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accordion</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <style>
+   
+    html {
+      overflow-y: scroll;
+    }
+    body {
+      background: #efefef;
+      padding: 30px;
+    }
+    ul {
+      margin-bottom: 0;
+    }
+    .accordion {
+      background: #fff;
+      border-radius: 5px;
+      padding: 30px;
+    }
+    .question {
+      border-top: 1px solid #eee;
+      padding: 20px;
+      cursor: pointer;
+      position: relative;
+    }
+    .question h2 {
+      font-size: 20px;
+      margin: 0;
+      color: #c00c00;
+    }
+    .question .glyphicon {
+      position: absolute;
+      right: 20px;
+      top: 0;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      color:#c00c00;
+      transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
+    }
+
+    .answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
+    }
+
+    .answer p {
+      padding: 20px;
+    }
+
+    .accordion li.open .question .glyphicon {
+      transform: rotate(180deg);
+    }
+    .accordion li.open .answer{
+      max-height: 150px;
+    }
+    
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="accordion">
+    <ul class="list-unstyled">
+      <li class="open">
+        <div class="question">
+          <h2>Will I be rich?</h2>
+          <span class="glyphicon glyphicon-chevron-down"></span>
+        </div>
+        <div class="answer">
+          <p>Absolutely! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis totam ipsam voluptate enim cumque cum temporibus? Nobis, autem ipsa inventore, eligendi commodi voluptates iure, rerum officiis quasi iusto accusantium dolor.</p>        
+        </div>
+      </li>
+      <li>
+        <div class="question">
+          <h2>What's for dinner?</h2>
+          <span class="glyphicon glyphicon-chevron-down"></span>
+        </div>
+        <div class="answer">
+          <p>Dog food and worms! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis totam ipsam voluptate enim cumque cum temporibus? Nobis, autem ipsa inventore, eligendi commodi voluptates iure, rerum officiis quasi iusto accusantium dolor.</p>
+        </div>
+      </li>
+      <li>
+        <div class="question">
+          <h2>Is JavaScript awesome?</h2>
+          <span class="glyphicon glyphicon-chevron-down"></span>
+        </div>
+        <div class="answer">
+          <p>Yes! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis totam ipsam voluptate enim cumque cum temporibus? Nobis, autem ipsa inventore, eligendi commodi voluptates iure, rerum officiis quasi iusto accusantium dolor.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+</div>
+
+  <script>
+    const accordion = document.querySelector('.accordion');
+    const items = accordion.querySelectorAll('li');
+    const questions = accordion.querySelectorAll('.question');
+
+    function toggleAccordion() {
+      const thisItem = this.parentNode;
+      
+      items.forEach(item => {
+        if(thisItem == item) {
+          thisItem.classList.toggle('open');
+          return;
+      }
+      item.classList.remove('open');
+    });
+  }
+
+  questions.forEach(question => question.addEventListener('click', toggleAccordion));
+
+  </script>
+  
+</body>
+</html>
