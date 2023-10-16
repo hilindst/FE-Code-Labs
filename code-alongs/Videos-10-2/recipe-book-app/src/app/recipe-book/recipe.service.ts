@@ -20,7 +20,7 @@ export class RecipeService {
       ]),
       new Recipe(
         'Ham',
-        '3 Hams will fill him',
+        '3 Hams will kill him',
         "https://i.redd.it/tbfp00ahou9a1.jpg",
         [
           new Ingredient('Ham', 1),
@@ -33,6 +33,10 @@ export class RecipeService {
 
   getRecipes() {
     return this.recipes.slice();
+  }
+
+  getRecipe(index:number){
+    return this.recipes[index];
   }
 
   addIngredientsToShoppingList(ingredients: Ingredient[]){
